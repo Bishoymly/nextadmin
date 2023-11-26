@@ -1,5 +1,5 @@
 # nextadmin
-
+<img alt="Next Admin" src="/public/NextAdminIcon.png" width="100px" height="100px">
 An open-source NextJS framework to kickstart your admin pages for NoSQL data.
 
 ## Getting Started
@@ -24,3 +24,10 @@ This working demo site was built using the Platforms Starter Kit and:
 - [JSON Schema](https://json-schema.org/) for defining entities schemas
 - [Vercel Blob](https://vercel.com/storage/blob) for image uploads
 - [Vercel](http://vercel.com/) for deployment
+
+## License
+
+The MIT License.
+
+## Author
+- [Bishoy Labib](https://bishoylabib.com)
