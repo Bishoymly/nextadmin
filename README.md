@@ -1,5 +1,4 @@
-# nextadmin
-<img alt="Next Admin" src="/public/NextAdminIcon.png" width="100px" height="100px">
+<h1><img alt="Next Admin" src="/public/NextAdminIcon.png" width="50px" height="50px"> Next Admin</h1>
 An open-source NextJS framework to kickstart your admin pages for NoSQL data.
 
 ## Getting Started
