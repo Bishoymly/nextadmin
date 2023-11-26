@@ -3,8 +3,9 @@
 An open-source NextJS framework to kickstart your admin pages for NoSQL data.
 
 ## Getting Started
-
-`npx create-next-app --example https://github.com/Bishoymly/nextadmin myadmin`
+```
+npx create-next-app --example https://github.com/Bishoymly/nextadmin myadmin
+```
 
 ## Features
 
