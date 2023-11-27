@@ -6,7 +6,7 @@ export default function DeleteMenuItem({ typeName, id }) {
   return (
     <form action={formDeleteAction}>
       <DropdownMenuItem>
-        <button>Delete</button>
+        <button className="w-full text-left cursor-default">Delete</button>
       </DropdownMenuItem>
     </form>
   );
