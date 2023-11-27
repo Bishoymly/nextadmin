@@ -53,7 +53,9 @@ export default function FormComponent({ typeName, item, type, formAction }) {
             render={({ field }) => (
               <FormItem className="flex flex-col">
                 <FormLabel>{display(name)}</FormLabel>
-                <FormControl>{renderFormControl(p, field, item)}</FormControl>
+                <FormControl>
+                  {renderFormControl(form, p, field, item)}
+                </FormControl>
                 <FormDescription>{p.description}</FormDescription>
                 <FormMessage />
               </FormItem>

@@ -1,3 +1,4 @@
+import { ScrollArea } from "./scroll-area";
 import {
   Select,
   SelectContent,
@@ -17,11 +18,13 @@ export default function DropDown({ field, items, ...props }) {
         <SelectValue placeholder="Select" />
       </SelectTrigger>
       <SelectContent>
-        {items?.map((item, index) => (
-          <SelectItem key={index} value={item}>
-            {item}
-          </SelectItem>
-        ))}
+        <ScrollArea className="max-h-72">
+          {items?.map((item, index) => (
+            <SelectItem key={index} value={item}>
+              {item}
+            </SelectItem>
+          ))}
+        </ScrollArea>
       </SelectContent>
     </Select>
   );
