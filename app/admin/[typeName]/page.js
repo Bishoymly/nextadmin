@@ -1,4 +1,3 @@
-import { getItemsByType } from "@/lib/cosmos/queries";
 import { getType } from "@/lib/types/utils";
 import SimpleGrid from "@/components/simple-grid";
 import Link from "next/link";
@@ -7,9 +6,10 @@ import { PlusIcon } from "@radix-ui/react-icons";
 import Page from "@/components/snippets/page";
 import Title from "@/components/snippets/title";
 import display from "@/lib/types/display";
+import db from "@/lib/db/db";
 
 export default async function ListPage({ params }) {
-  const items = await getItemsByType(params.typeName);
+  const items = await db.getItemsByType(params.typeName);
   const type = await getType(params.typeName);
 
   return (
