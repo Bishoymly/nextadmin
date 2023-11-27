@@ -10,8 +10,13 @@ export default async function CreatePage({ params }) {
 
   return (
     <Page>
-      <Title>{`Create ${display(type.name)}`}</Title>
-      <Form type={type} item={{}} formAction={createAction} />
+      <Title>{`Create ${display(type.title ?? params.typeName)}`}</Title>
+      <Form
+        typeName={params.typeName}
+        type={type}
+        item={{}}
+        formAction={createAction}
+      />
     </Page>
   );
 }

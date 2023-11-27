@@ -12,8 +12,13 @@ export default async function EditPage({ params }) {
 
   return (
     <Page>
-      <Title>{`Edit ${display(type.name)}`}</Title>
-      <Form type={type} item={item} formAction={updateAction} />
+      <Title>{`Edit ${display(type.title ?? params.typeName)}`}</Title>
+      <Form
+        typeName={params.typeName}
+        type={type}
+        item={item}
+        formAction={updateAction}
+      />
     </Page>
   );
 }

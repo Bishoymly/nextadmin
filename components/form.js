@@ -21,7 +21,7 @@ import SaveButton from "./save-button";
 import { useRouter } from "next/navigation";
 import renderFormControl from "@/lib/types/render-form-control";
 
-export default function FormComponent({ item, type, formAction }) {
+export default function FormComponent({ typeName, item, type, formAction }) {
   const router = useRouter();
   const schema = zodSchema(type);
   const form = useForm({
@@ -33,10 +33,10 @@ export default function FormComponent({ item, type, formAction }) {
 
   async function onSubmit(data) {
     await startTransition(async () => {
-      await formAction(type.name, data);
+      await formAction(typeName, data);
     });
 
-    router.push(`/admin/${type.name}`);
+    router.push(`/admin/${typeName}`);
   }
   return (
     <Form {...form}>
@@ -45,7 +45,7 @@ export default function FormComponent({ item, type, formAction }) {
         action={formAction}
         className="space-y-4"
       >
-        {Object.entries(type.jsonSchema?.properties ?? {}).map(([name, p]) => (
+        {Object.entries(type.properties ?? {}).map(([name, p]) => (
           <FormField
             key={name}
             control={form.control}
@@ -62,7 +62,7 @@ export default function FormComponent({ item, type, formAction }) {
         ))}
 
         <SaveButton />
-        <Link href={`/admin/${type.name}`}>
+        <Link href={`/admin/${typeName}`}>
           <Button variant="outline" className="ml-2">
             Cancel
           </Button>

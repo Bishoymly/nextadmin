@@ -1,18 +1,13 @@
 {
-    "name": "Post",
-    "jsonSchema": {
-        "title": "Post",
-        "type": "object",
-        "properties": {
-            "title": {
-                "type": "string"
-            },
-            "content": {
-                "type": "string"
-            }
-        },
-        "required": [
-            "title"
-        ]
+  "title": "Post",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "string"
     }
+  },
+  "required": ["title"]
 }

@@ -14,7 +14,7 @@ export default async function ListPage({ params }) {
 
   return (
     <Page>
-      <Title>{display(type.name)}</Title>
+      <Title>{display(type.title ?? params.typeName)}</Title>
       <div className="flex items-center justify-between">
         <div className="flex flex-1 items-center space-x-2">
           <Link href={`/admin/${params.typeName}/create`}>
@@ -25,7 +25,7 @@ export default async function ListPage({ params }) {
           </Link>
         </div>
       </div>
-      <SimpleGrid data={items} type={type} />
+      <SimpleGrid typeName={params.typeName} data={items} type={type} />
     </Page>
   );
 }
