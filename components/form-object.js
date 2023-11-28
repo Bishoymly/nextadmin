@@ -9,11 +9,11 @@ import {
 } from "@/components/ui/form";
 import display from "@/lib/types/display";
 import renderFormControl from "@/lib/types/render-form-control";
-import { Card } from "./ui/card";
+import { cn } from "@/lib/utils";
 
-export default function FormObject({ form, prefix, item, type }) {
+export default function FormObject({ className, form, prefix, item, type }) {
   return (
-    <Card className="space-y-4 p-8">
+    <div className={cn("space-y-4", className)}>
       {Object.entries(type.properties ?? {}).map(([name, p]) => (
         <FormField
           key={prefix + name}
@@ -31,6 +31,6 @@ export default function FormObject({ form, prefix, item, type }) {
           )}
         />
       ))}
-    </Card>
+    </div>
   );
 }

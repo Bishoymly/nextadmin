@@ -18,7 +18,12 @@ export default async function AdminLayout({ children }) {
     <div className="flex flex-col min-h-screen min-w-full bg-background max-h-screen">
       <nav className="flex-none flex justify-between items-center border-b border-border px-4 py-2">
         <Link href="/admin" className="flex flex-row items-center">
-          <Image src="/NextAdminIcon.png" width={26} height={26} />
+          <Image
+            src="/NextAdminIcon.png"
+            width={26}
+            height={26}
+            alt="Next Admin"
+          />
           <span className="text-lg font-bold ml-2">Next Admin</span>
         </Link>
         <div className="flex flex-row space-x-2">

@@ -45,23 +45,7 @@ export default function FormComponent({ typeName, item, type, formAction }) {
         action={formAction}
         className="space-y-4"
       >
-        {Object.entries(type.properties ?? {}).map(([name, p]) => (
-          <FormField
-            key={name}
-            control={form.control}
-            name={name}
-            render={({ field }) => (
-              <FormItem className="flex flex-col">
-                <FormLabel>{display(name)}</FormLabel>
-                <FormControl>
-                  {renderFormControl(form, p, field, item)}
-                </FormControl>
-                <FormDescription>{p.description}</FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        ))}
+        {renderFormControl(form, type, {}, item)}
 
         <SaveButton />
         <Link href={`/admin/${typeName}`}>
