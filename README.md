@@ -1,6 +1,8 @@
 <h1><img alt="Next Admin" src="/public/NextAdminIcon.png" width="50px" height="50px"> Next Admin</h1>
 An open-source NextJS framework to kickstart your admin pages for NoSQL data.
 
+[Demo](https://nextadmin.bishoylabib.com)
+
 ## Getting Started
 ```
 npx create-next-app --example https://github.com/Bishoymly/nextadmin myadmin
