@@ -1,5 +1,4 @@
 import { getType } from "@/lib/types/utils";
-import SimpleGrid from "@/components/simple-grid";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { PlusIcon } from "@radix-ui/react-icons";
@@ -7,9 +6,9 @@ import Page from "@/components/snippets/page";
 import Title from "@/components/snippets/title";
 import display from "@/lib/types/display";
 import db from "@/lib/db/db";
+import DataGrid from "@/components/data-grid";
 
-export default async function ListPage({ params }) {
-  const items = await db.getItemsByType(params.typeName);
+export default async function ListPage({ params, searchParams }) {
   const type = await getType(params.typeName);
 
   return (
@@ -25,7 +24,11 @@ export default async function ListPage({ params }) {
           </Link>
         </div>
       </div>
-      <SimpleGrid typeName={params.typeName} data={items} type={type} />
+      <DataGrid
+        searchParams={searchParams}
+        typeName={params.typeName}
+        type={type}
+      />
     </Page>
   );
 }

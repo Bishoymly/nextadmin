@@ -16,6 +16,10 @@
       "type": "string",
       "pattern": "^[0-9]{10}$"
     },
+    "contactType": {
+      "type": "string",
+      "enum": ["Personal", "Work"]
+    },
     "address": {
       "type": "object",
       "properties": {

@@ -44,21 +44,22 @@
     "cmdk": "^0.2.0",
     "date-fns": "^2.30.0",
     "lucide-react": "^0.292.0",
+    "next": "14.0.3",
+    "next-themes": "^0.2.1",
     "react": "^18",
     "react-day-picker": "^8.9.1",
     "react-dom": "^18.2.0",
-    "next": "14.0.3",
-    "next-themes": "^0.2.1",
     "react-hook-form": "^7.48.2",
+    "sonner": "^1.2.4",
     "tailwind-merge": "^2.0.0",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.22.4"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",
-    "postcss": "^8",
-    "tailwindcss": "^3.3.0",
     "eslint": "^8",
-    "eslint-config-next": "14.0.3"
+    "eslint-config-next": "14.0.3",
+    "postcss": "^8",
+    "tailwindcss": "^3.3.0"
   }
 }
