@@ -4,6 +4,7 @@ An open-source NextJS framework to kickstart your admin pages for NoSQL data.
 [Demo](https://nextadmin.bishoylabib.com)
 
 ## Getting Started
+
 ```
 npx create-next-app --example https://github.com/Bishoymly/nextadmin myadmin
 ```
@@ -21,6 +22,7 @@ This working demo site was built using the Platforms Starter Kit and:
 - [Next.js](https://nextjs.org/) as the React framework
 - [Tailwind](https://tailwindcss.com/) for CSS styling
 - [shadcn/ui](https://ui.shadcn.com/) for the UI components
+- [shadcn-table](https://github.com/sadmann7/shadcn-table) for server side data grid
 - [CosmosDB](https://azure.microsoft.com/en-us/products/cosmos-db) for the NoSQL database
 - [JSON Schema](https://json-schema.org/) for defining entities schemas
 - [Vercel Blob](https://vercel.com/storage/blob) for image uploads
@@ -31,4 +33,5 @@ This working demo site was built using the Platforms Starter Kit and:
 The MIT License.
 
 ## Author
+
 - [Bishoy Labib](https://bishoylabib.com)
