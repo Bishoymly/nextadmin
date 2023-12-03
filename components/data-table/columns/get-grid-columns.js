@@ -13,6 +13,12 @@ import { DataTableColumnHeader } from "@/components/data-table/data-table-column
 import display from "@/lib/types/display";
 import displayForId from "@/lib/types/display-for-id";
 
+const options = {
+  selectColumn: false,
+  actionsColumn: true,
+  makeFirstColumnClickable: true,
+};
+
 export default function getGridColumns(
   type,
   typeName,
@@ -22,14 +28,26 @@ export default function getGridColumns(
   let columns = [];
   columns = Object.entries(type.properties ?? {}).map(([name, p]) => {
     if (p.type == "string" || p.type == "number") {
-      return {
-        accessorKey: name,
-        header: ({ column }) => (
-          <DataTableColumnHeader column={column} title={display(name)} />
-        ),
-        enableSorting: true,
-        enableHiding: true,
-      };
+      if (p.format == "date-time" || p.format == "date") {
+        return {
+          accessorKey: name,
+          header: ({ column }) => (
+            <DataTableColumnHeader column={column} title={display(name)} />
+          ),
+          cell: ({ row }) => new Date(row.original[name]).toLocaleDateString(),
+          enableSorting: true,
+          enableHiding: true,
+        };
+      } else {
+        return {
+          accessorKey: name,
+          header: ({ column }) => (
+            <DataTableColumnHeader column={column} title={display(name)} />
+          ),
+          enableSorting: true,
+          enableHiding: true,
+        };
+      }
     } else {
       return {
         accessorKey: name,
@@ -44,80 +62,87 @@ export default function getGridColumns(
   });
 
   //Make the first column as link
-  if (columns.length > 0) {
-    const name = columns[0].accessorKey;
-    columns[0] = {
-      ...columns[0],
-      cell: ({ row }) => (
-        <Link
-          className="hover:underline"
-          href={`/admin/${typeName}/edit/${row.original.id}`}
-        >
-          {Array.isArray(row.original[name])
-            ? `[${row.original[name].length}]`
-            : row.original[name]}
-        </Link>
-      ),
-      enableHiding: false,
-    };
-  } else {
-    columns = [
-      {
-        accessorKey: "id",
-        header: ({ column }) => (
-          <DataTableColumnHeader column={column} title={"Id"} />
-        ),
+  if (options.makeFirstColumnClickable) {
+    if (columns.length > 0) {
+      const name = columns[0].accessorKey;
+      columns[0] = {
+        ...columns[0],
         cell: ({ row }) => (
           <Link
             className="hover:underline"
             href={`/admin/${typeName}/edit/${row.original.id}`}
           >
-            {displayForId(row.getValue("id"))}
+            {Array.isArray(row.original[name])
+              ? `[${row.original[name].length}]`
+              : row.original[name]}
           </Link>
         ),
         enableHiding: false,
+      };
+    } else {
+      columns = [
+        {
+          accessorKey: "id",
+          header: ({ column }) => (
+            <DataTableColumnHeader column={column} title={"Id"} />
+          ),
+          cell: ({ row }) => (
+            <Link
+              className="hover:underline"
+              href={`/admin/${typeName}/edit/${row.original.id}`}
+            >
+              {displayForId(row.getValue("id"))}
+            </Link>
+          ),
+          enableHiding: false,
+        },
+      ];
+    }
+  }
+
+  // Select checkboxes
+  if (options.selectColumn) {
+    columns = [
+      {
+        id: "select",
+        header: ({ table }) => (
+          <Checkbox
+            checked={table.getIsAllPageRowsSelected()}
+            onCheckedChange={(value) => {
+              table.toggleAllPageRowsSelected(!!value);
+              setSelectedRowIds((prev) =>
+                prev.length === data.length ? [] : data.map((row) => row.id)
+              );
+            }}
+            aria-label="Select all"
+            className="translate-y-[2px]"
+          />
+        ),
+        cell: ({ row }) => (
+          <Checkbox
+            checked={row.getIsSelected()}
+            onCheckedChange={(value) => {
+              row.toggleSelected(!!value);
+              setSelectedRowIds((prev) =>
+                value
+                  ? [...prev, row.original.id]
+                  : prev.filter((id) => id !== row.original.id)
+              );
+            }}
+            aria-label="Select row"
+            className="translate-y-[2px]"
+          />
+        ),
+        enableSorting: false,
+        enableHiding: false,
       },
+      ...columns,
     ];
   }
 
-  columns = [
-    // Select checkboxes
-    {
-      id: "select",
-      header: ({ table }) => (
-        <Checkbox
-          checked={table.getIsAllPageRowsSelected()}
-          onCheckedChange={(value) => {
-            table.toggleAllPageRowsSelected(!!value);
-            setSelectedRowIds((prev) =>
-              prev.length === data.length ? [] : data.map((row) => row.id)
-            );
-          }}
-          aria-label="Select all"
-          className="translate-y-[2px]"
-        />
-      ),
-      cell: ({ row }) => (
-        <Checkbox
-          checked={row.getIsSelected()}
-          onCheckedChange={(value) => {
-            row.toggleSelected(!!value);
-            setSelectedRowIds((prev) =>
-              value
-                ? [...prev, row.original.id]
-                : prev.filter((id) => id !== row.original.id)
-            );
-          }}
-          aria-label="Select row"
-          className="translate-y-[2px]"
-        />
-      ),
-      enableSorting: false,
-      enableHiding: false,
-    },
-    ...columns,
-    // actions at the end
-    {
+  // actions at the end
+  if (options.actionsColumn) {
+    columns.push({
       id: "actions",
       cell: ({ row }) => {
         return (
@@ -140,8 +165,8 @@ export default function getGridColumns(
           </DropdownMenu>
         );
       },
-    },
-  ];
+    });
+  }
 
   return columns;
 }
