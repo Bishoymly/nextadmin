@@ -15,23 +15,27 @@ import { PlusIcon, XIcon } from "lucide-react";
 import { useState } from "react";
 import { Input } from "./ui/input";
 import newFromType from "@/lib/types/new-from-type";
+import { useFieldArray } from "react-hook-form";
 
 export default function FormArray({ form, prefix, data, type }) {
-  const [items, setItems] = useState(data);
+  const { fields, append, remove } = useFieldArray({
+    name: prefix,
+    control: form.control,
+  });
 
   return (
     <div className="space-y-4">
-      {items.map((item, index) => (
-        <div key={index} className="flex flex-row space-x-4">
+      {fields.map((field, index) => (
+        <div key={field.id} className="flex flex-row space-x-4">
           <div className="flex-1">
-            {renderFormControl(form, type, {}, item)}
+            {renderFormControl(form, type, field, {})}
           </div>
           <Button
             type="button"
             variant="ghost"
             size="sm"
             className="flex-none h-8"
-            onClick={() => setItems([...items].splice(index, 1))}
+            onClick={remove}
           >
             <XIcon className="h-4 w-4" />
           </Button>
@@ -42,7 +46,7 @@ export default function FormArray({ form, prefix, data, type }) {
         variant="outline"
         size="sm"
         className="h-8 px-2 lg:px-3"
-        onClick={() => setItems([...items, newFromType(type.type)])}
+        onClick={append}
       >
         Add
         <PlusIcon className="ml-2 h-4 w-4" />

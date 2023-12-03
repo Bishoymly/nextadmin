@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Task",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "The title of the task."
+    },
+    "description": {
+      "type": "string",
+      "description": "The description of the task."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["Pending", "In Progress", "Completed"],
+      "description": "The status of the task."
+    },
+    "dueDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The due date of the task."
+    },
+    "assignee": {
+      "type": "string",
+      "description": "The assignee of the task."
+    }
+  },
+  "required": ["id", "title", "status"]
+}
