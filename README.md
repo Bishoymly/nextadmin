@@ -2,7 +2,7 @@
 
 An open-source NextJS framework to kickstart your admin pages for NoSQL data. [Demo](https://nextadmin.bishoylabib.com)
 
-<img src="/docs/images/Screenshot3.png" style="border:solid 1px">
+<img src="/docs/images/Showcase.png" style="border:solid 1px">
 
 ## Getting Started
 
