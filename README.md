@@ -1,19 +1,25 @@
 <h1><img alt="Next Admin" src="/public/NextAdminIcon.png" width="50px" height="50px"> Next Admin</h1>
-An open-source NextJS framework to kickstart your admin pages for NoSQL data.
 
-[Demo](https://nextadmin.bishoylabib.com)
+An open-source NextJS framework to kickstart your admin pages for NoSQL data. [Demo](https://nextadmin.bishoylabib.com)
+
+<img src="/docs/images/Screenshot3.png" style="border:solid 1px">
 
 ## Getting Started
 
-```
-npx create-next-app --example https://github.com/Bishoymly/nextadmin myadmin
-```
+- [Installation](/docs/installation.md)
+- [Customize Models](/docs/customize-models.md)
 
 ## Features
 
-- Connect to your NoSQL CosmosDB, MongoDB, DynamoDB
-- Define your entities using JSON Schema
-- Generate admin pages to manage those entities and store them in your database
+- Connect to your NoSQL CosmosDB (and coming soon MongoDB, DynamoDB)
+- Define your models using a standard JSON Schema
+- Generate admin pages to manage your data and store them in your database
+- Beutifully designed shadcn/ui components
+- Dark/Light themes support
+- Data grid with server side paging, sorting, searching and filtering
+- Forms with client and server validation
+- Customize components to render your models
+- Use it to quickly get to market with standard features then progressively add custom developed pages
 
 ## Tech Stack
 
