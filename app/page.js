@@ -19,7 +19,7 @@ export default function Home() {
         </span>
       </div>
 
-      <div>
+      <div className="my-6">
         <Link href="/admin">
           <Button className="group">
             Start Here &nbsp;
@@ -30,74 +30,146 @@ export default function Home() {
         </Link>
       </div>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://github.com/Bishoymly/nextadmin"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Documentation and Getting started guide.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      <div className="flex flex-col space-y-6 lg:flex-row lg:space-y-0 lg:space-x-12">
+        <div className="flex-1">
+          <h2 class="text-2xl font-semibold mb-4">Getting Started</h2>
+          <ul className="list-disc ml-6">
+            <li>
+              <a
+                className="text-blue-500 underline"
+                target="_blank"
+                href="https://github.com/Bishoymly/nextadmin/blob/main/docs/installation.md"
+              >
+                Installation
+              </a>
+            </li>
+            <li>
+              <a
+                className="text-blue-500 underline"
+                target="_blank"
+                href="https://github.com/Bishoymly/nextadmin/blob/main/docs/customize-models.md"
+              >
+                Customize Models
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div className="flex-1">
+          <h2 class="text-2xl font-semibold mb-4">Features</h2>
+          <ul className="list-disc ml-6">
+            <li>Connect to your NoSQL CosmosDB or MongoDB</li>
+            <li>Define your models using a standard JSON Schema</li>
+            <li>
+              Generate admin pages to manage your data and store them in your
+              database
+            </li>
+            <li>Beautifully designed shadcn/ui components</li>
+            <li>Dark/Light themes support</li>
+            <li>
+              Data grid with server side paging, sorting, searching and
+              filtering
+            </li>
+            <li>Forms with client and server validation</li>
+            <li>Customize components to render your models</li>
+            <li>
+              Use it to quickly get to market with standard features then
+              progressively add custom developed pages
+            </li>
+          </ul>
+        </div>
+        <div className="flex-1">
+          <h2 class="text-2xl font-semibold mb-4">Tech Stack</h2>
+          <ul className="list-disc ml-6">
+            <li>
+              <a
+                className="text-blue-500 underline"
+                target="_blank"
+                href="https://nextjs.org/"
+              >
+                Next.js
+              </a>{" "}
+              as the React framework
+            </li>
+            <li>
+              <a
+                className="text-blue-500 underline"
+                target="_blank"
+                href="https://tailwindcss.com/"
+              >
+                Tailwind
+              </a>{" "}
+              for CSS styling
+            </li>
+            <li>
+              <a
+                className="text-blue-500 underline"
+                target="_blank"
+                href="https://ui.shadcn.com/"
+              >
+                shadcn/ui
+              </a>{" "}
+              for the UI components
+            </li>
+            <li>
+              <a
+                className="text-blue-500 underline"
+                target="_blank"
+                href="https://github.com/sadmann7/shadcn-table"
+              >
+                shadcn-table
+              </a>{" "}
+              for server side data grid
+            </li>
+            <li>
+              <a
+                className="text-blue-500 underline"
+                target="_blank"
+                href="https://azure.microsoft.com/en-us/products/cosmos-db"
+              >
+                CosmosDB
+              </a>{" "}
+              or{" "}
+              <a
+                className="text-blue-500 underline"
+                target="_blank"
+                href="https://www.mongodb.com/"
+              >
+                MongoDB
+              </a>{" "}
+              for the NoSQL database
+            </li>
+            <li>
+              <a
+                className="text-blue-500 underline"
+                target="_blank"
+                href="https://json-schema.org/"
+              >
+                JSON Schema
+              </a>{" "}
+              for defining entities schemas
+            </li>
+            <li>
+              <a
+                className="text-blue-500 underline"
+                target="_blank"
+                href="https://vercel.com/storage/blob"
+              >
+                Vercel Blob
+              </a>{" "}
+              for image uploads
+            </li>
+            <li>
+              <a
+                className="text-blue-500 underline"
+                target="_blank"
+                href="http://vercel.com/"
+              >
+                Vercel
+              </a>{" "}
+              for deployment
+            </li>
+          </ul>
+        </div>
       </div>
     </main>
   );

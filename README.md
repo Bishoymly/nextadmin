@@ -23,8 +23,6 @@ An open-source NextJS framework to kickstart your admin pages for NoSQL data. [D
 
 ## Tech Stack
 
-This working demo site was built using the Platforms Starter Kit and:
-
 - [Next.js](https://nextjs.org/) as the React framework
 - [Tailwind](https://tailwindcss.com/) for CSS styling
 - [shadcn/ui](https://ui.shadcn.com/) for the UI components
