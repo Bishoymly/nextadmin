@@ -1,9 +1,12 @@
 import db from "@/lib/db/db";
 import SimpleGrid from "./simple-grid";
-import toFilterString from "./data-table/columns/to-filter-string";
 
 export default async function DataGrid({ searchParams, typeName, type }) {
   const { page, per_page, sort } = searchParams;
+  let filterParams = { ...searchParams };
+  delete filterParams.page;
+  delete filterParams.per_page;
+  delete filterParams.sort;
 
   // Fallback page for invalid page numbers
   const pageAsNumber = Number(page);
@@ -19,7 +22,7 @@ export default async function DataGrid({ searchParams, typeName, type }) {
   const { rows, totalRowsCount } = await db.queryWithFiltersAndPaging(
     typeName,
     "*",
-    toFilterString(type, searchParams),
+    db.toFilterString(type, filterParams),
     sort?.replace(".", " "),
     fallbackPage,
     limit

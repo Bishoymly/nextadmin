@@ -6,44 +6,15 @@
 npx create-next-app --example https://github.com/Bishoymly/nextadmin myadmin
 ```
 
-## 2. Create a free tier CosmosDb
+## 2. Connect to your database
 
-### using Azure CLI
+Copy the file "sample.env" and rename it to ".env" then replace the proper variable
+For CosmosDB: get the connection string and past it inside the variable "COSMOSDB_CONNECTION_STRING"
+For MongoDB: get the url and past it inside the variable "MONGODB_URI"
 
-To create an account with free tier using CLI, set the --enable-free-tier parameter to true:
+Open the file "lib/db/db.js" and uncomment the proper 2 lines for your database.
 
-```PowerShell
-# Create a free tier account for API for NoSQL
-
-az cosmosdb create \
-    -n "Myaccount" \
-    -g "MyResourcegroup" \
-    --enable-free-tier true \
-    --default-consistency-level "Session"
-```
-
-### using PowerShell
-
-To create an account with free tier using Azure PowerShell, set the -EnableFreeTier parameter to true:
-
-```PowerShell
-# Create a free tier account for API for NoSQL.
-New-AzCosmosDBAccount -ResourceGroupName "MyResourcegroup" `
-    -Name "MyAccount" `
-    -EnableFreeTier $true `
-    -DefaultConsistencyLevel "Session" `
-    -Location "East US" `
-```
-
-## 3. Add Connection String
-
-In Azure Portal, open the Azure Cosmos DB account and go to "Keys" to get your database connection string.
-
-Copy the file "sample.env" and rename it to ".env" then get the connection string from Azure Portal and past it inside the variable "COSMOSDB_CONNECTION_STRING"
-
-<img alt="Next Admin" src="/docs/images/AzurePortalConnectionString.png">
-
-## 4. Run the application
+## 3. Run the application
 
 ```
 npm run dev

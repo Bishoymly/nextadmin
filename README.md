@@ -11,7 +11,7 @@ An open-source NextJS framework to kickstart your admin pages for NoSQL data. [D
 
 ## Features
 
-- Connect to your NoSQL CosmosDB (and coming soon MongoDB, DynamoDB)
+- Connect to your NoSQL CosmosDB or MongoDB
 - Define your models using a standard JSON Schema
 - Generate admin pages to manage your data and store them in your database
 - Beutifully designed shadcn/ui components
@@ -29,7 +29,7 @@ This working demo site was built using the Platforms Starter Kit and:
 - [Tailwind](https://tailwindcss.com/) for CSS styling
 - [shadcn/ui](https://ui.shadcn.com/) for the UI components
 - [shadcn-table](https://github.com/sadmann7/shadcn-table) for server side data grid
-- [CosmosDB](https://azure.microsoft.com/en-us/products/cosmos-db) for the NoSQL database
+- [CosmosDB](https://azure.microsoft.com/en-us/products/cosmos-db) or [MongoDB](https://www.mongodb.com/) for the NoSQL database
 - [JSON Schema](https://json-schema.org/) for defining entities schemas
 - [Vercel Blob](https://vercel.com/storage/blob) for image uploads
 - [Vercel](http://vercel.com/) for deployment
