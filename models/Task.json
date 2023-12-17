@@ -13,7 +13,11 @@
     },
     "status": {
       "type": "string",
-      "enum": ["Pending", "In Progress", "Completed"],
+      "enum": [
+        "Pending",
+        "In Progress",
+        "Completed"
+      ],
       "description": "The status of the task."
     },
     "dueDate": {
@@ -24,7 +28,16 @@
     "assignee": {
       "type": "string",
       "description": "The assignee of the task."
+    },
+    "project": {
+      "type": "string",
+      "description": "The project associated with the task.",
+      "source": "Project.name"
     }
   },
-  "required": ["id", "title", "status"]
+  "required": [
+    "id",
+    "title",
+    "status"
+  ]
 }
