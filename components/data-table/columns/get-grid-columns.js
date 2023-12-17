@@ -28,7 +28,19 @@ export default function getGridColumns(
   let columns = [];
   columns = Object.entries(type.properties ?? {}).map(([name, p]) => {
     if (p.type == "string" || p.type == "number") {
-      if (p.format == "date-time" || p.format == "date") {
+      if (p.format == "uri") {
+        return {
+          accessorKey: name,
+          header: ({ column }) => (
+            <DataTableColumnHeader column={column} title={display(name)} />
+          ),
+          cell: ({ row }) => (
+            <img src={row.original[name]} className="max-h-10 w-auto" />
+          ),
+          enableSorting: false,
+          enableHiding: true,
+        };
+      } else if (p.format == "date-time" || p.format == "date") {
         return {
           accessorKey: name,
           header: ({ column }) => (
