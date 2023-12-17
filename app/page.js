@@ -52,6 +52,15 @@ export default function Home() {
                 Customize Models
               </a>
             </li>
+            <li>
+              <a
+                className="text-blue-500 underline"
+                target="_blank"
+                href="https://github.com/Bishoymly/nextadmin/blob/main/docs/enable-image-upload.md"
+              >
+                Enable Image Upload
+              </a>
+            </li>
           </ul>
         </div>
         <div className="flex-1">

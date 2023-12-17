@@ -8,6 +8,7 @@ An open-source NextJS framework to kickstart your admin pages for NoSQL data. [D
 
 - [Installation](/docs/installation.md)
 - [Customize Models](/docs/customize-models.md)
+- [Enable Image Upload](/docs/enable-image-upload.md)
 
 ## Features
 
