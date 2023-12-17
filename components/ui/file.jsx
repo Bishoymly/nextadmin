@@ -1,9 +1,10 @@
 import { useRef, useState } from "react";
 import { Input } from "./input";
 import { Button } from "./button";
-import { Trash2Icon, UploadCloudIcon } from "lucide-react";
+import { Loader2, Trash2Icon, UploadCloudIcon } from "lucide-react";
 
 export default function File({ form, field, ...props }) {
+  const [loading, setLoading] = useState(false);
   const inputFileRef = useRef(null);
 
   const upload = (event) => {
@@ -22,13 +23,15 @@ export default function File({ form, field, ...props }) {
     }
 
     const file = inputFileRef.current.files[0];
-
+    setLoading(true);
     const response = await fetch(`/api/upload?filename=${file.name}`, {
       method: "POST",
       body: file,
     });
 
     const newBlob = await response.json();
+
+    setLoading(false);
     form.setValue(field.name, newBlob.url);
   }
 
@@ -41,7 +44,16 @@ export default function File({ form, field, ...props }) {
         className="hidden"
       />
       <Input type="hidden" field={field} {...props} />
-      {field.value ? (
+      {loading ? (
+        <div>
+          <div className="flex items-start mb-4 space-x-2">
+            <Button variant="outline" onClick={upload} disabled="true">
+              <Loader2 className="mr-2 animate-spin" />
+              Uploading..
+            </Button>
+          </div>
+        </div>
+      ) : field.value ? (
         <div>
           <div className="flex items-start mb-4 space-x-2">
             <Button variant="outline" onClick={upload}>
@@ -53,7 +65,17 @@ export default function File({ form, field, ...props }) {
           </div>
           <img
             src={field.value}
-            alt="Image Preview"
+            alt={
+              field.value
+                .split("/")
+                .pop()
+                .match(/[^\/]+(?=\.[^.]+$)/)
+                ? field.value
+                    .split("/")
+                    .pop()
+                    .replace(/-[^.]+(?=\.[^.]+$)/, "")
+                : "Unknown File"
+            }
             className="max-h-40 w-auto"
           />
         </div>
