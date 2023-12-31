@@ -1,17 +1,17 @@
 import Link from "next/link";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { MoreHorizontal, PenSquare, X } from "lucide-react";
-import DeleteMenuItem from "@/components/data-table/delete-menu-item";
+import { PenSquare, X, XIcon } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { DataTableColumnHeader } from "@/components/data-table/data-table-column-header";
 import display from "@/lib/types/display";
 import displayForId from "@/lib/types/display-for-id";
+import DeleteButton from "@/components/data-table/delete-button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export default function getGridColumns(
   type,
@@ -157,23 +157,24 @@ export default function getGridColumns(
       id: "actions",
       cell: ({ row }) => {
         return (
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="h-8 w-8 p-0">
-                <span className="sr-only">Open menu</span>
-                <MoreHorizontal className="h-4 w-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <Link href={`/admin/${typeName}/edit/${row.original.id}`}>
-                <DropdownMenuItem>
-                  <PenSquare className="h-4 w-4 mr-2" />
-                  Edit
-                </DropdownMenuItem>
-              </Link>
-              <DeleteMenuItem typeName={typeName} id={row.original.id} />
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <div className="flex flex-row">
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Link href={`/admin/${typeName}/edit/${row.original.id}`}>
+                    <Button variant="ghost" size="sm">
+                      <PenSquare className="h-4 w-4" />
+                    </Button>
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Edit</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+
+            <DeleteButton typeName={typeName} id={row.original.id} />
+          </div>
         );
       },
     });
