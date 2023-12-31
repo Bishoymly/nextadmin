@@ -19,7 +19,12 @@ export default function getGridColumns(
 ) {
   let columns = [];
   columns = Object.entries(type.properties ?? {}).map(([name, p]) => {
-    if (p.type == "string" || p.type == "number") {
+    if (
+      p.type == "string" ||
+      p.type == "number" ||
+      p.type == "integer" ||
+      p.type == "boolean"
+    ) {
       if (p.format == "uri") {
         return {
           accessorKey: name,

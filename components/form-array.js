@@ -1,17 +1,15 @@
 "use client";
 import { Button } from "./ui/button";
-import { Edit2Icon, PenSquare, PlusIcon, XIcon } from "lucide-react";
+import { PenSquare, PlusIcon, XIcon } from "lucide-react";
 import { useState } from "react";
 import { DataTable } from "./ui/data-table";
 import getGridColumns from "./data-table/columns/get-grid-columns";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "./ui/dialog";
 import renderFormControl from "@/lib/types/render-form-control";
 import zodSchema from "@/lib/types/zod-schema";
