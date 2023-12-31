@@ -1,17 +1,10 @@
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { PenSquare, X, XIcon } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { DataTableColumnHeader } from "@/components/data-table/data-table-column-header";
 import display from "@/lib/types/display";
 import displayForId from "@/lib/types/display-for-id";
-import DeleteButton from "@/components/data-table/delete-button";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import EditButton from "../edit-button";
+import DeleteButton from "../delete-button";
 
 export default function getGridColumns(
   type,
@@ -158,21 +151,7 @@ export default function getGridColumns(
       cell: ({ row }) => {
         return (
           <div className="flex flex-row">
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Link href={`/admin/${typeName}/edit/${row.original.id}`}>
-                    <Button variant="ghost" size="sm">
-                      <PenSquare className="h-4 w-4" />
-                    </Button>
-                  </Link>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>Edit</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-
+            <EditButton href={`/admin/${typeName}/edit/${row.original.id}`} />
             <DeleteButton typeName={typeName} id={row.original.id} />
           </div>
         );
