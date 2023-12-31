@@ -13,17 +13,16 @@ import { DataTableColumnHeader } from "@/components/data-table/data-table-column
 import display from "@/lib/types/display";
 import displayForId from "@/lib/types/display-for-id";
 
-const options = {
-  selectColumn: false,
-  actionsColumn: true,
-  makeFirstColumnClickable: true,
-};
-
 export default function getGridColumns(
   type,
   typeName,
   data,
-  setSelectedRowIds
+  setSelectedRowIds,
+  options = {
+    selectColumn: false,
+    actionsColumn: true,
+    makeFirstColumnClickable: true,
+  }
 ) {
   let columns = [];
   columns = Object.entries(type.properties ?? {}).map(([name, p]) => {
